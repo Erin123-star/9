@@ -9,8 +9,7 @@ const lines = [
     "从此，田光乍现，我的世界春花开满山。",
     "而多年后的今天，你靠在我的怀里，",
     "我才后知后觉地反应过来，那夜，我听到震耳欲聋的声响，",
-    "不是雷声，是心跳"
-   
+    "不是雷声，是心跳。"
 ];
 
 const textElement = document.getElementById('text');
@@ -34,12 +33,12 @@ function fadeIn(element) {
     let opacity = 0;
     const fadeInterval = setInterval(() => {
         if (opacity < 1) {
-            opacity += 0.02;
+            opacity += 0.05; // 调高透明度增加的速度
             element.style.opacity = opacity;
         } else {
             clearInterval(fadeInterval);
         }
-    }, 50);
+    }, 100); // 调高间隔时间以确保动画流畅
 }
 
 function showHeart() {
@@ -51,5 +50,5 @@ function showHeart() {
     }, 4000); // 心跳动画完成后4秒黑屏
 }
 
-// 开始显示文本
-showNextLine();
+// 3秒黑屏后开始显示文本
+setTimeout(showNextLine, 3000);
