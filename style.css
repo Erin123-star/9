@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#text {
+    opacity: 0;
+    white-space: pre-wrap;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#heart {
+    display: none;
+    width: 100px;
+    height: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    clip-path: polygon(50% 0%, 0% 40%, 50% 100%, 100% 40%);
+    animation: heartbeat 1s ease-in-out 3 forwards;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+}
