@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
-    color: white;
+    background-color: black; /* 黑底 */
+    color: white; /* 白字 */
     font-family: 'Microsoft YaHei', sans-serif;
     font-size: 1.2em;
     display: flex;
@@ -10,10 +10,11 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    flex-direction: column; /* 垂直排列文字 */
 }
 
 #text {
-    opacity: 0;
+    opacity: 1;
     white-space: pre-wrap;
     text-align: center;
     padding: 0 20px;
