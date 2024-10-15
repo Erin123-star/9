@@ -15,33 +15,38 @@ const lines = [
 const textElement = document.getElementById('text');
 let currentLine = 0;
 
+// 用来显示每一行文本
 function showNextLine() {
+    console.log("当前行:", currentLine);  // 调试输出
     if (currentLine < lines.length) {
         const line = document.createElement('p');
         line.textContent = lines[currentLine];
-        line.style.opacity = '0';
-        textElement.appendChild(line);
-        fadeIn(line);
-        currentLine++;
+        line.style.opacity = '0'; // 初始透明度为0
+        textElement.appendChild(line); // 添加新的一行
+        fadeIn(line); // 渐显动画
+        currentLine++; 
         setTimeout(showNextLine, 3000); // 每3秒显示一行
     } else {
-        setTimeout(showHeart, 3000); // 等待3秒后显示爱心
+        setTimeout(showHeart, 3000); // 所有文本显示后，等待3秒显示爱心
     }
 }
 
+// 渐显动画
 function fadeIn(element) {
     let opacity = 0;
     const fadeInterval = setInterval(() => {
         if (opacity < 1) {
-            opacity += 0.05; // 调高透明度增加的速度
-            element.style.opacity = opacity;
+            opacity += 0.05; // 每次增加0.05的透明度
+            element.style.opacity = opacity; // 应用透明度变化
         } else {
             clearInterval(fadeInterval);
         }
-    }, 100); // 调高间隔时间以确保动画流畅
+    }, 100); // 每0.1秒更新一次透明度
 }
 
+// 显示爱心动画
 function showHeart() {
+    console.log("显示爱心"); // 调试输出
     const heart = document.getElementById('heart');
     heart.style.display = 'block';
     setTimeout(() => {
@@ -51,4 +56,7 @@ function showHeart() {
 }
 
 // 3秒黑屏后开始显示文本
-setTimeout(showNextLine, 3000);
+setTimeout(() => {
+    console.log("3秒黑屏结束，开始显示文本");  // 调试输出
+    showNextLine();
+}, 3000);
