@@ -17,7 +17,6 @@ let currentLine = 0;
 
 // 用来显示每一行文本
 function showNextLine() {
-    console.log("当前行:", currentLine);  // 调试输出
     if (currentLine < lines.length) {
         const line = document.createElement('p');
         line.textContent = lines[currentLine];
@@ -27,7 +26,7 @@ function showNextLine() {
         currentLine++; 
         setTimeout(showNextLine, 3000); // 每3秒显示一行
     } else {
-        setTimeout(showHeart, 3000); // 所有文本显示后，等待3秒显示爱心
+        setTimeout(blackScreen, 3000); // 所有文本显示后，等待3秒黑屏
     }
 }
 
@@ -44,9 +43,15 @@ function fadeIn(element) {
     }, 100); // 每0.1秒更新一次透明度
 }
 
+// 黑屏然后显示爱心
+function blackScreen() {
+    document.body.style.backgroundColor = 'black'; // 黑屏
+    textElement.style.display = 'none'; // 隐藏文字
+    setTimeout(showHeart, 2000); // 黑屏2秒后显示爱心
+}
+
 // 显示爱心动画
 function showHeart() {
-    console.log("显示爱心"); // 调试输出
     const heart = document.getElementById('heart');
     heart.style.display = 'block';
     setTimeout(() => {
@@ -55,8 +60,5 @@ function showHeart() {
     }, 4000); // 心跳动画完成后4秒黑屏
 }
 
-// 3秒黑屏后开始显示文本
-setTimeout(() => {
-    console.log("3秒黑屏结束，开始显示文本");  // 调试输出
-    showNextLine();
-}, 3000);
+// 开始显示文本
+showNextLine();
